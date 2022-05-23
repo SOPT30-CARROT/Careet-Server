@@ -13,7 +13,7 @@ const connectDB = async () => {
         console.log("Mongoose Connected ...");
 
         User.createCollection().then(function (collection) {
-            console.log('Team Collection is created!');
+            console.log('User Collection is created!');
         });
         Content.createCollection().then(function (collection) {
             console.log('Content Collection is created!');
