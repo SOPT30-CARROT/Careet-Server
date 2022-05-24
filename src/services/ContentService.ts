@@ -3,10 +3,8 @@ import { ContentListResponseDto } from "../interfaces/content/ContentListRespons
 
 const getPopularContent = async (): Promise<ContentListResponseDto> => {
     try {
-        const contents = await Content.find({});
-        console.log(contents);
-        return contents;
-
+        let contents = await Content.find({}).sort({ "bookmarkCount": -1 });
+        return { contents: contents };
     } catch (error) {
         console.log(error);
         throw error;
