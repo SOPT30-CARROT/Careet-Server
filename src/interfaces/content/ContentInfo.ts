@@ -5,4 +5,5 @@ export interface ContentInfo {
     thumbnail: string,
     description: string,
     bookmarkCount: Number
+    createdAt: Date
 }
