@@ -11,6 +11,17 @@ const getPopularContent = async (): Promise<ContentListResponseDto> => {
     }
 }
 
+const getRecentContent = async (): Promise<ContentListResponseDto> => {
+    try {
+        let contents = await Content.find({}).sort({ "createdAt": -1 });
+        return { contents: contents };
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
 export default {
-    getPopularContent
+    getPopularContent,
+    getRecentContent
 }
