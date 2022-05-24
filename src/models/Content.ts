@@ -18,9 +18,10 @@ const ContentSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-},
-{
-    timestamps: true
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
 });
 
 export default mongoose.model<ContentInfo & mongoose.Document>("Content", ContentSchema);
