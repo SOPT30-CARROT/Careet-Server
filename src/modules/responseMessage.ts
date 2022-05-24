@@ -5,6 +5,7 @@ const message = {
     INTERNAL_SERVER_ERROR: '서버 내부 오류',
 
     CREATE_BOOKMARK_SUCCESS: '북마크 생성 성공',
+    DELETE_BOOKMARK_SUCCESS: '북마크 삭제 성공',
 }
 
 export default message;
