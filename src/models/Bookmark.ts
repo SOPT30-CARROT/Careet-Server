@@ -7,7 +7,7 @@ const BookmarkSchema = new mongoose.Schema({
         required: true,
         ref: "User"
     },
-    bookmark: {
+    content: {
         type: mongoose.Types.ObjectId,
         required: true,
         ref: "Content"
