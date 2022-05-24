@@ -10,6 +10,10 @@ const ContentSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    bookmarkCount: {
+        type: Number,
+        default: 0
+    }
 },
 {
     timestamps: true
