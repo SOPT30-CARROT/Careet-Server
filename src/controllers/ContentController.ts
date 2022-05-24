@@ -3,6 +3,7 @@ import util from "../modules/util";
 import message from "../modules/responseMessage";
 import statusCode from "../modules/statusCode";
 import { ContentService } from "../services";
+import { ContentListResponseDto } from "../interfaces/content/ContentListResponseDto";
 
 /**
  * @route GET /content/popular
@@ -12,7 +13,7 @@ import { ContentService } from "../services";
 const getPopularContent = async (req: Request, res: Response) => {
 
     try {
-        const contents = await ContentService.getPopularContent();
+        const contents: ContentListResponseDto = await ContentService.getPopularContent();
         res.status(statusCode.OK).send(util.success(statusCode.OK, message.GET_POPULAR_CONTENTS_SUCCESS, contents));
     } catch (error) {
         console.log(error);
