@@ -19,7 +19,7 @@ const toggleBookmark = async (req: Request, res: Response): Promise<void> => {
             res.status(statusCode.CREATED).send(util.success(statusCode.CREATED, message.CREATE_BOOKMARK_SUCCESS, data));    
         } else 
         if (data === "delete") {
-            res.status(statusCode.CREATED).send(util.success(statusCode.CREATED, message.DELETE_BOOKMARK_SUCCESS, data));    
+            res.status(statusCode.OK).send(util.success(statusCode.CREATED, message.DELETE_BOOKMARK_SUCCESS, data));    
         }
 
     } catch (error) {
@@ -35,7 +35,7 @@ const getContentBookmarked = async (req: Request, res: Response): Promise<void> 
         // const bookmarkInfo: BookmarkInfo = 
         const data = await BookmarkService.getContentBookmarked(userId);
         
-        res.status(statusCode.CREATED).send(util.success(statusCode.CREATED, message.GET_BOOKMARKED_CONTENTS_SUCCESS, data));
+        res.status(statusCode.OK).send(util.success(statusCode.CREATED, message.GET_BOOKMARKED_CONTENTS_SUCCESS, data));
     } catch (error) {
         console.log(error);
         res.status(statusCode.INTERNAL_SERVER_ERROR).send(util.fail(statusCode.INTERNAL_SERVER_ERROR, message.INTERNAL_SERVER_ERROR));
