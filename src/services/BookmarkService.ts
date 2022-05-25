@@ -42,21 +42,11 @@ const getContentBookmarked = async (userId: string): Promise<ContentListResponse
         for (let i = 0; i < bookmarks.length; i++) {
             contentIds.push(bookmarks[i].content);
         }
-        console.log(contentIds);
         
-        // const contentListResponseDto = []
         const contentListResponseDto = await Content.find({
             '_id': { $in: contentIds }
         })
 
-        // for (bookmark in bookmarks) {
-
-        // for (let i = 0; i < bookmarks.length; i++) {
-        //     let content = await Content.findOne({"_id": bookmarks[i].content})
-        //     console.log(content);
-        //     if (content) {
-        //         contentListResponseDto.push(content);
-        //     }
         return { contents: contentListResponseDto };
 
     } catch (error) {
