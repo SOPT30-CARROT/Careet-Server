@@ -1,5 +1,7 @@
 import { BookmarkInfo } from "../interfaces/bookmark/BookmarkInfo";
+import { ContentListResponseDto } from "../interfaces/content/ContentListResponseDto";
 import Bookmark from "../models/Bookmark";
+import Content from "../models/Content";
 
 const toggleBookmark = async (contentId: string, userId: string): Promise<string> => {
     try {
@@ -33,7 +35,28 @@ const toggleBookmark = async (contentId: string, userId: string): Promise<string
     }
 }
 
+const getContentBookmarked = async (userId: string): Promise<ContentListResponseDto> => {
+    try {
+        const bookmarks = await Bookmark.find({"user": userId});
+        const contentIds = [];
+        for (let i = 0; i < bookmarks.length; i++) {
+            contentIds.push(bookmarks[i].content);
+        }
+        
+        const contentListResponseDto = await Content.find({
+            '_id': { $in: contentIds }
+        })
+
+        return { contents: contentListResponseDto };
+
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
 
 export default {
     toggleBookmark,
+    getContentBookmarked,
 }
