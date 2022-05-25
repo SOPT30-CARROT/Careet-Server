@@ -1,5 +1,9 @@
+import mongoose from "mongoose";
 export interface ContentInfo {
-    name: string,
+    _id: mongoose.Schema.Types.ObjectId;
+    title: string,
     thumbnail: string,
+    description: string,
     bookmarkCount: Number
+    createdAt: Date
 }

@@ -10,13 +10,18 @@ const ContentSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    description: {
+        type: String,
+        required: true
+    },
     bookmarkCount: {
         type: Number,
         default: 0
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
     }
-},
-{
-    timestamps: true
 });
 
 export default mongoose.model<ContentInfo & mongoose.Document>("Content", ContentSchema);
