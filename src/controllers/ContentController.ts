@@ -21,6 +21,23 @@ const getPopularContent = async (req: Request, res: Response) => {
     }
 }
 
+/**
+ * @route GET /content/recent
+ * @desc Get recent contents
+ * @access Public
+ */
+const getRecentContent = async (req: Request, res: Response) => {
+
+    try {
+        const contents: ContentListResponseDto = await ContentService.getRecentContent();
+        res.status(statusCode.OK).send(util.success(statusCode.OK, message.GET_RECENT_CONTENTS_SUCCESS, contents));
+    } catch (error) {
+        console.log(error);
+        return res.status(statusCode.INTERNAL_SERVER_ERROR).send(util.fail(statusCode.INTERNAL_SERVER_ERROR, message.INTERNAL_SERVER_ERROR));   
+    }
+}
+
 export default {
-    getPopularContent
+    getPopularContent,
+    getRecentContent
 }

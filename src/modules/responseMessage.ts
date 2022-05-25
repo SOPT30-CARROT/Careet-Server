@@ -5,6 +5,7 @@ const message = {
     INTERNAL_SERVER_ERROR: '서버 내부 오류',
 
     GET_POPULAR_CONTENTS_SUCCESS: '인기 콘텐츠 조회 성공',
+    GET_RECENT_CONTENTS_SUCCESS: '최신 콘텐츠 조회 성공',
 }
 
 export default message;
