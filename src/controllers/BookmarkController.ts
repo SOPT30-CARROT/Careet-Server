@@ -1,5 +1,4 @@
 import express, { Request, Response } from "express";
-import { BookmarkInfo } from "../interfaces/bookmark/bookmarkInfo";
 import message from "../modules/responseMessage";
 import statusCode from "../modules/statusCode";
 import util from "../modules/util";
