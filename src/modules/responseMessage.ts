@@ -9,6 +9,7 @@ const message = {
 
     GET_POPULAR_CONTENTS_SUCCESS: '인기 콘텐츠 조회 성공',
     GET_RECENT_CONTENTS_SUCCESS: '최신 콘텐츠 조회 성공',
+    GET_BOOKMARKED_CONTENTS_SUCCESS: '북마크된 콘텐츠 조회 성공'
 }
 
 export default message;
