@@ -4,6 +4,9 @@ const message = {
     BAD_REQUEST: '잘못된 요청',
     INTERNAL_SERVER_ERROR: '서버 내부 오류',
 
+    CREATE_BOOKMARK_SUCCESS: '북마크 생성 성공',
+    DELETE_BOOKMARK_SUCCESS: '북마크 삭제 성공',
+
     GET_POPULAR_CONTENTS_SUCCESS: '인기 콘텐츠 조회 성공',
     GET_RECENT_CONTENTS_SUCCESS: '최신 콘텐츠 조회 성공',
 }
