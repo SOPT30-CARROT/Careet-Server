@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { BookmarkInfo } from "../interfaces/bookmark/bookmarkInfo";
+import { BookmarkInfo } from "../interfaces/bookmark/BookmarkInfo";
 
 const BookmarkSchema = new mongoose.Schema({
     user: {
