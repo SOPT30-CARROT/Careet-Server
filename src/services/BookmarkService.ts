@@ -12,7 +12,7 @@ const toggleBookmark = async (contentId: string, userId: string): Promise<string
             "user": userId
         });
         
-        const content = await Content.findById(contentId );
+        const content = await Content.findById(contentId);
 
         if (!bookmarkCheck) {
             const bookmark = new Bookmark({
@@ -35,7 +35,6 @@ const toggleBookmark = async (contentId: string, userId: string): Promise<string
         });
 
         if (content) {
-            // const count: Number = content.bookmarkCount;
             await Content.updateOne(
                 { "_id": contentId },
                 { "$inc": { "bookmarkCount": -1 } });
