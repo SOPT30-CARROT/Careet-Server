@@ -11,6 +11,8 @@ const toggleBookmark = async (contentId: string, userId: string): Promise<string
             "content": contentId,
             "user": userId
         });
+        
+        const content = await Content.findById(contentId);
 
         if (!bookmarkCheck) {
             const bookmark = new Bookmark({
@@ -18,7 +20,12 @@ const toggleBookmark = async (contentId: string, userId: string): Promise<string
                 user: userId,
             });
             await bookmark.save();
-
+            
+            if (content) {
+                await Content.updateOne(
+                    { "_id": contentId },
+                    { "$inc": { "bookmarkCount": 1 } });
+            }
             return "create";
         }
 
@@ -26,6 +33,12 @@ const toggleBookmark = async (contentId: string, userId: string): Promise<string
             content: contentId,
             user: userId,
         });
+
+        if (content) {
+            await Content.updateOne(
+                { "_id": contentId },
+                { "$inc": { "bookmarkCount": -1 } });
+        }
 
         return "delete";
 
@@ -37,7 +50,7 @@ const toggleBookmark = async (contentId: string, userId: string): Promise<string
 
 const getContentBookmarked = async (userId: string): Promise<ContentListResponseDto> => {
     try {
-        const bookmarks = await Bookmark.find({"user": userId});
+        const bookmarks = await Bookmark.find({ "user": userId });
         const contentIds = [];
         for (let i = 0; i < bookmarks.length; i++) {
             contentIds.push(bookmarks[i].content);
