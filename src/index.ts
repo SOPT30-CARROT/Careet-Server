@@ -2,6 +2,10 @@ import express, { Request, Response, NextFunction } from "express";
 const app = express();
 import connectDB from "./loaders/db";
 import routes from './routes';
+import cors from "cors";
+import config from "./config";
+
+
 require('dotenv').config();
 
 connectDB();
@@ -9,8 +13,16 @@ connectDB();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(routes);   //라우터 
-// error handler
+app.use(routes);
+app.use(
+ cors({
+    credentials: true,
+    origin: [
+      "http://localhost:3000",
+      config.EC2URI
+    ],
+  })
+);
 
 interface ErrorType {
   message: string;
