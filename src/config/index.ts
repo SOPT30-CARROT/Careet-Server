@@ -20,4 +20,9 @@ export default {
    * MongoDB URI
    */
   mongoURI: process.env.MONGODB_URI as string,
+
+  /**
+   * EC2 URI
+   */
+  EC2URI: process.env.EC2_URI as string,
 };
