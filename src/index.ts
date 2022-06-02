@@ -2,9 +2,8 @@ import express, { Request, Response, NextFunction } from "express";
 const app = express();
 import connectDB from "./loaders/db";
 import routes from './routes';
-import cors from "cors";
 import config from "./config";
-
+const cors = require('cors');
 
 require('dotenv').config();
 
